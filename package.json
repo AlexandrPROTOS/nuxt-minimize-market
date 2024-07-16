@@ -10,7 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/eslint": "^0.3.13",
     "nuxt": "^3.12.3",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "@nuxtjs/stylelint-module": "^5.2.0",
+    "sass": "^1.77.8",
+    "stylelint": "^16.7.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "stylelint-order": "^6.0.4"
   }
 }
