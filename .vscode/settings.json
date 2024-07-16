@@ -2,5 +2,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "stylelint.validate": ["css", "vue"]
+  "stylelint.validate": ["css", "vue", "scss"]
 }

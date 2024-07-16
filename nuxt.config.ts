@@ -10,5 +10,10 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/eslint",
     '@nuxtjs/stylelint-module',
-  ]
+  ],
+
+  css: [
+    'normalize.css/normalize.css',
+    '~/assets/main.scss'
+  ],
 })
