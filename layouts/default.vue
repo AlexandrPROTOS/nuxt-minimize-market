@@ -1,5 +1,7 @@
 <template>
   <PageHeader />
-  <slot />
+  <main class="main main-container">
+    <slot />
+  </main>
   <PageFooter />
 </template>

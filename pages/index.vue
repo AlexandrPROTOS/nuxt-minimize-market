@@ -1,5 +1,3 @@
 <template>
-  <main class="main main-container">
-    <h2 class="main__header">Каталог</h2>
-  </main>
+  <CategoriesList />
 </template>
