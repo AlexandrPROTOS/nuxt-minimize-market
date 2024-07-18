@@ -1,8 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const catalog = useCatalogStore();
+</script>
 
 <template>
-  <div class="catalog">
-    <CategoriesList class="catalog__categories" />
-    <ProductsList class="catalog__products" />
-  </div>
+  <transition name="opacity">
+    <div v-show="catalog.categories.length" class="catalog">
+      <CategoriesList />
+      <ProductsList />
+    </div>
+  </transition>
 </template>
+
+<style scoped lang="scss">
+.catalog {
+  transition: 0.7s ease;
+}
+
+.opacity-enter-from,
+.opacity-enter-to {
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
+</style>

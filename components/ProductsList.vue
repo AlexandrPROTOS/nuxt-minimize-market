@@ -11,3 +11,15 @@ const catalog = useCatalogStore();
     />
   </ul>
 </template>
+
+<style scoped lang="scss">
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  margin-top: 30px;
+  padding: 0;
+  gap: 25px;
+}
+</style>

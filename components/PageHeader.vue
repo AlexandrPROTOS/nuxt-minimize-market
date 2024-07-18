@@ -17,7 +17,7 @@
           <NuxtLink
             class="page-header__nav-link page-header__nav-cart"
             to="/cart"
-            active-class="page-header__nav-link--active"
+            active-class="page-header__nav-link--active page-header__nav-cart--active"
           />
         </li>
       </ul>
@@ -70,10 +70,14 @@
 
   &__nav-cart {
     width: 80px;
-    background-image: url("../assets/icons/basket.svg");
+    background-image: url("../assets/icons/basket_black.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
+
+    &--active {
+      background-image: url("../assets/icons/basket_white.svg");
+    }
   }
 }
 
