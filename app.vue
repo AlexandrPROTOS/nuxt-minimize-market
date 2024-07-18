@@ -3,7 +3,7 @@ import { useCatalogStore } from "./stores/catalog";
 
 const catalog = useCatalogStore();
 
-catalog.fetchCatalog();
+catalog.getCatalog();
 </script>
 
 <template>

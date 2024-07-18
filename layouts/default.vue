@@ -1,7 +1,9 @@
 <template>
-  <PageHeader />
-  <main class="main main-container">
-    <slot />
-  </main>
-  <PageFooter />
+  <div>
+    <PageHeader />
+    <main class="main-container">
+      <slot />
+    </main>
+    <PageFooter />
+  </div>
 </template>

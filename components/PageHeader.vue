@@ -73,6 +73,7 @@
     background-image: url("../assets/icons/basket.svg");
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 40px;
   }
 }
 

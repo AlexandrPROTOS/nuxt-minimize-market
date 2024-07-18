@@ -23,21 +23,21 @@ export type Category = {
   updated_at: string;
 };
 
-export type GetProductsResponse = {
+export type FetchProductsResponse = {
   count: number;
   next: null | string;
   previous: null | string;
   results: Product[];
 };
 
-export type GetCategoriesResponse = {
+export type FetchCategoriesResponse = {
   count: number;
   next: null | string;
   previous: null | string;
   results: Category[];
 };
 
-export const getProducts = async (): Promise<GetProductsResponse> => {
+export const fetchProducts = async (): Promise<FetchProductsResponse> => {
   const config = useRuntimeConfig();
   const headers = {
     headers: {
@@ -49,7 +49,7 @@ export const getProducts = async (): Promise<GetProductsResponse> => {
   return result;
 };
 
-export const getCategories = async (): Promise<GetCategoriesResponse> => {
+export const fetchCategories = async (): Promise<FetchCategoriesResponse> => {
   const config = useRuntimeConfig();
   const headers = {
     headers: {
