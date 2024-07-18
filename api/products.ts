@@ -1,1 +1,0 @@
-const PRODUCTS_BASE_URL = 'https://api.apisful.com/v1/'

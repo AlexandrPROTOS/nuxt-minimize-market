@@ -7,13 +7,16 @@ export default defineNuxtConfig({
     baseURL: '/nuxt-minimize-market/'
   },
 
-  modules: [
-    "@nuxt/eslint",
-    '@nuxtjs/stylelint-module',
-  ],
+  modules: ["@nuxt/eslint", '@nuxtjs/stylelint-module', "@pinia/nuxt"],
 
   css: [
     'normalize.css/normalize.css',
     '~/assets/main.scss'
   ],
+
+  runtimeConfig: {
+    public: {
+      apiKey: ''
+    }
+  },
 })
