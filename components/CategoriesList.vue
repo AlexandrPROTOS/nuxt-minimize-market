@@ -11,6 +11,11 @@ const catalog = useCatalogStore();
         :key="category.id"
         :category="category"
         class="categories__item"
+        :class="{
+          'categories__item--active':
+            catalog.activeFilterCategory === category.id,
+        }"
+        @click="catalog.selectCategory(category.id)"
       />
     </ul>
   </div>
@@ -41,13 +46,16 @@ const catalog = useCatalogStore();
     text-decoration: underline dotted gray;
     color: gray;
 
-    &:hover {
-      color: rgb(73 73 73);
-      cursor: pointer;
-      transition: ease 50ms;
+    &:not(.categories__item--active) {
+      &:hover {
+        color: rgb(73 73 73);
+        cursor: pointer;
+        transition: ease 50ms;
+      }
     }
 
-    &--activeFilter {
+    &--active {
+      text-decoration: unset;
       color: black;
     }
   }

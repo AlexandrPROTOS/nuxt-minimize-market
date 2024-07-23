@@ -37,26 +37,42 @@ export type FetchCategoriesResponse = {
   results: Category[];
 };
 
-export const fetchProducts = async (): Promise<FetchProductsResponse> => {
+export const fetchProducts = async (
+  categoryId?: Category["id"]
+): Promise<FetchProductsResponse> => {
   const config = useRuntimeConfig();
-  const headers = {
+  const options = {
     headers: {
       "X-Api-Key": config.public.apiKey,
     },
+    params: {},
   };
-  const response = await fetch(`${BASE_URL}${PRODUCTS}`, headers);
-  const result = await response.json();
+  if (categoryId) {
+    options.params = {
+      filter: {
+        category: { icontains: `${categoryId}` },
+      },
+    };
+  }
+  const response: Promise<FetchProductsResponse> = $fetch(
+    `${BASE_URL}${PRODUCTS}`,
+    options
+  );
+  const result = await response;
   return result;
 };
 
 export const fetchCategories = async (): Promise<FetchCategoriesResponse> => {
   const config = useRuntimeConfig();
-  const headers = {
+  const options = {
     headers: {
       "X-Api-Key": config.public.apiKey,
     },
   };
-  const response = await fetch(`${BASE_URL}${CATEGORIES}`, headers);
-  const result = await response.json();
+  const response: Promise<FetchCategoriesResponse> = $fetch(
+    `${BASE_URL}${CATEGORIES}`,
+    options
+  );
+  const result = await response;
   return result;
 };

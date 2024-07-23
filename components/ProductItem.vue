@@ -25,7 +25,7 @@ defineProps({
         typeof slug === "string" &&
         typeof title === "string" &&
         typeof updated_at === "string" &&
-        typeof variants === "object"
+        (variants === undefined || typeof variants === "object")
       );
     },
   },
