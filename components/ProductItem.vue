@@ -34,9 +34,11 @@ defineProps({
 
 <template>
   <li class="products-item">
-    <img :src="product.images[0]" alt="" class="products-item__img" />
-    <p class="products-item__title">{{ product.title }}</p>
-    <p class="products-item__price">{{ product.price }}$</p>
+    <NuxtLink :to="`/product/${product.id}`" class="products-item__link">
+      <img :src="product.images[0]" alt="" class="products-item__img" />
+      <p class="products-item__title">{{ product.title }}</p>
+      <p class="products-item__price">{{ product.price }}$</p>
+    </NuxtLink>
   </li>
 </template>
 
@@ -49,6 +51,15 @@ defineProps({
   background-color: aliceblue;
   border: 2px solid gray;
   border-radius: 25px;
+
+  &__link {
+    text-decoration: none;
+    color: black;
+
+    &:visited {
+      color: black;
+    }
+  }
 
   &:hover {
     cursor: pointer;

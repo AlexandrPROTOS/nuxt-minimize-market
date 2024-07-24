@@ -58,8 +58,7 @@ export const fetchProducts = async (
     `${BASE_URL}${PRODUCTS}`,
     options
   );
-  const result = await response;
-  return result;
+  return response;
 };
 
 export const fetchCategories = async (): Promise<FetchCategoriesResponse> => {
@@ -73,6 +72,21 @@ export const fetchCategories = async (): Promise<FetchCategoriesResponse> => {
     `${BASE_URL}${CATEGORIES}`,
     options
   );
-  const result = await response;
-  return result;
+  return response;
+};
+
+export const fetchProduct = async (
+  productId: Product["id"]
+): Promise<Product> => {
+  const config = useRuntimeConfig();
+  const options = {
+    headers: {
+      "X-Api-Key": config.public.apiKey,
+    },
+  };
+  const response: Promise<Product> = $fetch(
+    `${BASE_URL}${PRODUCTS}/${productId}`,
+    options
+  );
+  return response;
 };

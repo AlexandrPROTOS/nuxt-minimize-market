@@ -3,7 +3,7 @@ const catalog = useCatalogStore();
 </script>
 
 <template>
-  <div v-if="catalog.categories.length > 0" class="categories">
+  <div class="categories">
     <p class="categories__name">Категории:</p>
     <ul class="categories__list">
       <CategoryItem
@@ -11,11 +11,6 @@ const catalog = useCatalogStore();
         :key="category.id"
         :category="category"
         class="categories__item"
-        :class="{
-          'categories__item--active':
-            catalog.activeFilterCategory === category.id,
-        }"
-        @click="catalog.selectCategory(category.id)"
       />
     </ul>
   </div>
@@ -42,22 +37,6 @@ const catalog = useCatalogStore();
 
   &__item {
     margin: 0;
-    font-size: 22px;
-    text-decoration: underline dotted gray;
-    color: gray;
-
-    &:not(.categories__item--active) {
-      &:hover {
-        color: rgb(73 73 73);
-        cursor: pointer;
-        transition: ease 50ms;
-      }
-    }
-
-    &--active {
-      text-decoration: unset;
-      color: black;
-    }
   }
 }
 </style>
