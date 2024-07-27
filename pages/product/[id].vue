@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { type Product, fetchProduct } from "~/api/catalog";
-const route = useRoute();
+import {
+  type DetailedProduct,
+  type ExpandedVariant,
+  fetchProduct,
+} from "~/api/catalog";
 
-const product = ref<Product>({
+const route = useRoute();
+const cart = useCartStore();
+
+const product = ref<DetailedProduct>({
   category: "",
   created_at: "",
   id: "",
@@ -13,14 +19,29 @@ const product = ref<Product>({
   updated_at: "",
   variants: [],
 });
+const currentVariant = ref<ExpandedVariant | undefined>();
 const productImg = ref("");
+const productId: DetailedProduct["id"] = route.params.id as string;
 
-const productId: Product["id"] = route.params.id as string;
+const changeImage = (image: string): void => {
+  productImg.value = image;
+};
 
-const getProduct = async (productId: Product["id"]): Promise<void> => {
+const selectVariant = (variantIdx: number): void => {
+  if (product.value.variants) {
+    currentVariant.value = product.value.variants[variantIdx];
+    changeImage(currentVariant.value.variant_image[0]);
+  }
+};
+
+const getProduct = async (productId: DetailedProduct["id"]): Promise<void> => {
   const resultProduct = await fetchProduct(productId);
   product.value = resultProduct;
-  productImg.value = product.value.images[0];
+  if (!product.value.variants || product.value.variants.length === 0) {
+    productImg.value = product.value.images[0];
+    return;
+  }
+  selectVariant(0);
 };
 
 getProduct(productId);
@@ -30,11 +51,15 @@ getProduct(productId);
   <div class="product">
     <section class="product__imgs">
       <img :src="productImg" :alt="product.title" class="product__big-img" />
-      <ul v-if="product.images.length > 1" class="product__imgs-list">
+      <ul
+        v-if="product.variants && product.variants.length > 0 && currentVariant"
+        class="product__imgs-list"
+      >
         <li
-          v-for="image in product.images"
+          v-for="image in currentVariant.variant_image"
           :key="image"
           class="product__imgs-item"
+          @click="changeImage(image)"
         >
           <img :src="image" :alt="product.slug" class="product__mini-img" />
         </li>
@@ -48,13 +73,26 @@ getProduct(productId);
         laudantium. Ea velit vero repellat ab rem eligendi doloremque doloribus
         eveniet nisi atque.
       </p>
-      <select id="" name="">
-        <option v-for="variant in product.variants" :key="variant" value="">
-          {{ variant }}
+      <select
+        v-if="product.variants && product.variants.length > 0"
+        id=""
+        name=""
+        @change="
+          selectVariant(Number(($event.target as HTMLSelectElement).value))
+        "
+      >
+        <option
+          v-for="(variant, idx) in product.variants"
+          :key="idx"
+          :value="idx"
+        >
+          {{ variant.color }}
         </option>
       </select>
-      <p>{{ product.price }}</p>
-      <button>Добавить в корзину</button>
+      <p>{{ product.price }}$</p>
+      <button @click="cart.addItemInCart(product, currentVariant)">
+        Добавить в корзину
+      </button>
     </section>
   </div>
 </template>

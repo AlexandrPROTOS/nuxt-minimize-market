@@ -1,7 +1,7 @@
 const BASE_URL = "https://api.apisful.com/v1/collections";
 
-export const PRODUCTS = "/products";
 export const CATEGORIES = "/categories";
+export const PRODUCTS = "/products";
 
 export type Product = {
   category: string;
@@ -12,7 +12,16 @@ export type Product = {
   slug: string;
   title: string;
   updated_at: string;
-  variants: string[];
+  variants?: string[];
+};
+
+export type ExpandedVariant = {
+  color: string;
+  variant_image: string[];
+};
+
+export type DetailedProduct = Product & {
+  variants?: ExpandedVariant[];
 };
 
 export type Category = {
@@ -50,7 +59,7 @@ export const fetchProducts = async (
   if (categoryId) {
     options.params = {
       filter: {
-        category: { icontains: `${categoryId}` },
+        category: { icontains: categoryId },
       },
     };
   }
@@ -77,15 +86,15 @@ export const fetchCategories = async (): Promise<FetchCategoriesResponse> => {
 
 export const fetchProduct = async (
   productId: Product["id"]
-): Promise<Product> => {
+): Promise<DetailedProduct> => {
   const config = useRuntimeConfig();
   const options = {
     headers: {
       "X-Api-Key": config.public.apiKey,
     },
   };
-  const response: Promise<Product> = $fetch(
-    `${BASE_URL}${PRODUCTS}/${productId}`,
+  const response: Promise<DetailedProduct> = $fetch(
+    `${BASE_URL}${PRODUCTS}/${productId}?expand=variants`,
     options
   );
   return response;
