@@ -19,6 +19,10 @@ const cart = useCartStore();
           {{ item.count }}
         </p>
         <p>{{ item.price }}р</p>
+        <button @click="item.count--">-</button>
+        <button @click="item.count++">+</button>
+        <button @click="cart.deleteItemFromCart(item)">удалить</button>
+        <p>{{ item.price * item.count }}</p>
       </li>
     </ul>
     <p>{{ cart.cartSum }}</p>
