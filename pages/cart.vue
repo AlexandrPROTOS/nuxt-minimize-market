@@ -19,12 +19,31 @@ const cart = useCartStore();
           {{ item.count }}
         </p>
         <p>{{ item.price }}р</p>
-        <button @click="item.count--">-</button>
+        <button
+          @click="
+            () => {
+              item.count--;
+              if (item.count === 0) {
+                cart.deleteItemFromCart(item);
+              }
+            }
+          "
+        >
+          -
+        </button>
         <button @click="item.count++">+</button>
         <button @click="cart.deleteItemFromCart(item)">удалить</button>
         <p>{{ item.price * item.count }}</p>
       </li>
     </ul>
     <p>{{ cart.cartSum }}</p>
+    <form action="">
+      <input type="text" placeholder="Как вас зовут?" />
+      <input
+        type="text"
+        placeholder="Как нам с вами связаться(номер телефона)?"
+      />
+      <button type="button">Заказать</button>
+    </form>
   </div>
 </template>

@@ -17,21 +17,28 @@ export const useCartStore = defineStore("cart", () => {
     cart.value.forEach((item) => {
       totalSum += item.price * item.count;
     });
-    addCartToLS();
     return totalSum;
   });
 
-  // const getCartFromLS = (): void => {
-  //   if (localStorage.getItem("cart")) {
-  //     const cartFromLS = localStorage.getItem("cart");
-  //     console.log(cartFromLS);
-  //   }
-  // };
+  const setCartFromLS = (): void => {
+    const cartInLocalStorage = localStorage.getItem("cart");
+    if (!cartInLocalStorage) {
+      return;
+    }
+    cart.value = JSON.parse(cartInLocalStorage);
+  };
 
-  // const addCartToLS = (): void => {
-  //   localStorage.setItem("cart", JSON.stringify(cart.value));
-  //   getCartFromLS();
-  // };
+  const addCartToLS = (value: CartItem[]): void => {
+    if (cart.value.length === 0) {
+      clearLS();
+      return;
+    }
+    localStorage.setItem("cart", JSON.stringify(value));
+  };
+
+  const clearLS = (): void => {
+    localStorage.clear();
+  };
 
   const addItemInCart = (
     product: DetailedProduct,
@@ -65,5 +72,12 @@ export const useCartStore = defineStore("cart", () => {
     cart.value.splice(itemIndex, 1);
   };
 
-  return { cart, cartSum, addItemInCart, deleteItemFromCart };
+  return {
+    cart,
+    cartSum,
+    setCartFromLS,
+    addCartToLS,
+    addItemInCart,
+    deleteItemFromCart,
+  };
 });

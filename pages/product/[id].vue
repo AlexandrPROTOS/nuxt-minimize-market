@@ -121,6 +121,7 @@ getProduct(productId);
   &__mini-img {
     width: 100px;
     height: 115px;
+    cursor: pointer;
     border-radius: 10px;
   }
 

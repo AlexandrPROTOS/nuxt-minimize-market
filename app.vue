@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { useCatalogStore } from "./stores/catalog";
-
 const catalog = useCatalogStore();
+const cart = useCartStore();
 
 catalog.getCatalog();
+
+onMounted(() => {
+  cart.setCartFromLS();
+
+  watch(cart.cart, (value) => {
+    cart.addCartToLS(value);
+  });
+});
 </script>
 
 <template>
