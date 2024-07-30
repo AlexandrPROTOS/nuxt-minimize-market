@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import type { ExpandedVariant, DetailedProduct } from "~/api/catalog";
 
-type CartItem = {
+export type CartItem = {
   id: string;
   title: string;
   price: number;
@@ -9,6 +9,8 @@ type CartItem = {
   count: number;
   variant?: ExpandedVariant;
 };
+
+const LS_CART_KEY = "cart";
 
 export const useCartStore = defineStore("cart", () => {
   const cart = ref<CartItem[]>([]);
@@ -21,7 +23,7 @@ export const useCartStore = defineStore("cart", () => {
   });
 
   const setCartFromLS = (): void => {
-    const cartInLocalStorage = localStorage.getItem("cart");
+    const cartInLocalStorage = localStorage.getItem(LS_CART_KEY);
     if (!cartInLocalStorage) {
       return;
     }
@@ -29,15 +31,7 @@ export const useCartStore = defineStore("cart", () => {
   };
 
   const addCartToLS = (value: CartItem[]): void => {
-    if (cart.value.length === 0) {
-      clearLS();
-      return;
-    }
-    localStorage.setItem("cart", JSON.stringify(value));
-  };
-
-  const clearLS = (): void => {
-    localStorage.clear();
+    localStorage.setItem(LS_CART_KEY, JSON.stringify(value));
   };
 
   const addItemInCart = (

@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import type { CartItem } from "~/stores/cart";
+
 const cart = useCartStore();
+const changeCount = (item: CartItem, newCount: CartItem["count"]): void => {
+  item.count = newCount;
+  if (newCount < 1) {
+    cart.deleteItemFromCart(item);
+  }
+};
 </script>
 
 <template>
@@ -15,23 +23,10 @@ const cart = useCartStore();
           {{ item.title }}
           <span v-if="item.variant"> ({{ item.variant?.color }}) </span>
         </p>
-        <p>
-          {{ item.count }}
-        </p>
+        <p>{{ item.count }}</p>
         <p>{{ item.price }}р</p>
-        <button
-          @click="
-            () => {
-              item.count--;
-              if (item.count === 0) {
-                cart.deleteItemFromCart(item);
-              }
-            }
-          "
-        >
-          -
-        </button>
-        <button @click="item.count++">+</button>
+        <button @click="changeCount(item, item.count - 1)">-</button>
+        <button @click="changeCount(item, item.count + 1)">+</button>
         <button @click="cart.deleteItemFromCart(item)">удалить</button>
         <p>{{ item.price * item.count }}</p>
       </li>
