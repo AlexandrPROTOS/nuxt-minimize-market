@@ -66,17 +66,19 @@ getProduct(productId);
       </ul>
     </section>
     <section class="product__information">
-      <p>{{ product.title }}</p>
-      <p>
+      <h2 class="product__information-title">{{ product.title }}</h2>
+      <p class="product__information-description">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
         delectus blanditiis corporis quaerat asperiores illum atque ab
         laudantium. Ea velit vero repellat ab rem eligendi doloremque doloribus
         eveniet nisi atque.
       </p>
+      <p class="product__information-price">Цена: {{ product.price }}$</p>
       <select
         v-if="product.variants && product.variants.length > 0"
         id=""
         name=""
+        class="product__information-select"
         @change="
           selectVariant(Number(($event.target as HTMLSelectElement).value))
         "
@@ -85,13 +87,16 @@ getProduct(productId);
           v-for="(variant, idx) in product.variants"
           :key="idx"
           :value="idx"
+          class="product__information-option"
         >
           {{ variant.color }}
         </option>
       </select>
-      <p>{{ product.price }}$</p>
-      <button @click="cart.addItemInCart(product, currentVariant)">
-        Добавить в корзину
+      <button
+        class="product__information-btn"
+        @click="cart.addItemInCart(product, currentVariant)"
+      >
+        В корзину
       </button>
     </section>
   </div>
@@ -101,7 +106,10 @@ getProduct(productId);
 .product {
   display: flex;
   margin-top: 24px;
+  padding: 25px;
   gap: 50px;
+  background-color: rgb(201 184 187);
+  border-radius: 15px;
 
   &__big-img {
     display: block;
@@ -128,14 +136,63 @@ getProduct(productId);
   &__big-img,
   &__mini-img {
     background-color: white;
+    object-fit: contain;
   }
 
   &__information {
     display: flex;
     flex-direction: column;
     align-content: center;
-    margin-right: auto;
-    margin-left: auto;
+
+    &-title,
+    &-description {
+      margin: 0;
+      text-align: center;
+    }
+
+    &-description {
+      margin-top: 20px;
+      font-size: large;
+    }
+
+    &-price {
+      margin: 0;
+      margin-top: 20px;
+      font-size: large;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    &-select {
+      width: 300px;
+      height: 30px;
+      margin-top: 20px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      background-color: aliceblue;
+      border-radius: 10px;
+      align-self: center;
+    }
+
+    &-btn {
+      width: 300px;
+      height: 50px;
+      margin-top: 70px;
+      font-size: large;
+      cursor: pointer;
+      background-color: aliceblue;
+      border-radius: 15px;
+      align-self: center;
+
+      &:hover {
+        background-color: rgb(78 131 244);
+      }
+
+      &:active {
+        background-color: gray;
+      }
+    }
   }
 }
 </style>

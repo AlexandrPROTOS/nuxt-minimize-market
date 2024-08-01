@@ -72,6 +72,7 @@ defineProps({
     height: 70%;
     background-color: white;
     border-radius: 20px;
+    object-fit: contain;
   }
 
   &__title {

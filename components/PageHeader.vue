@@ -61,10 +61,20 @@
       padding: 15px;
     }
 
+    &:hover {
+      background-color: rgb(78 131 244);
+      border-radius: 10px;
+    }
+
     &--active {
       color: white;
+      cursor: default;
       background-color: black;
       border-radius: 10px;
+
+      &:hover {
+        background-color: black;
+      }
     }
   }
 
