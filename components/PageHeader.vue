@@ -53,6 +53,16 @@
     display: flex;
     width: 60px;
     height: 60px;
+
+    @media (width <= 1000px) {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media (width <= 768px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__app-heading {
@@ -60,6 +70,19 @@
     font-size: 26px;
     color: blue;
     align-self: center;
+
+    @media (width <= 1000px) {
+      font-size: 22px;
+    }
+
+    @media (width <= 768px) {
+      font-size: 16px;
+    }
+
+    @media (width <= 500px) {
+      display: none;
+      font-size: 16px;
+    }
   }
 
   &__nav-list {
@@ -69,6 +92,19 @@
     width: 400px;
     margin: 0;
     padding: 12px 0;
+
+    @media (width <= 1000px) {
+      width: 300px;
+    }
+
+    @media (width <= 768px) {
+      max-width: 230px;
+      padding: 6px 0;
+    }
+
+    @media (width <= 500px) {
+      width: 250px;
+    }
   }
 
   &__nav-item {
@@ -77,6 +113,20 @@
     font-size: 30px;
     line-height: 1.15;
     align-self: center;
+
+    @media (width <= 1000px) {
+      font-size: 22px;
+    }
+
+    @media (width <= 768px) {
+      margin-right: auto;
+      margin-left: auto;
+      font-size: 18px;
+    }
+
+    @media (width <= 500px) {
+      margin-right: 0;
+    }
   }
 
   &__nav-link {
@@ -85,6 +135,14 @@
     height: 57.5px;
     text-decoration: none;
     color: black;
+
+    @media (width <= 1000px) {
+      height: 45px;
+    }
+
+    @media (width <= 768px) {
+      height: 38px;
+    }
 
     &:first-child {
       padding: 15px;
@@ -118,6 +176,15 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
+
+    @media (width <= 1000px) {
+      width: 60px;
+    }
+
+    @media (width <= 768px) {
+      width: 50px;
+      height: 45px;
+    }
 
     &:hover,
     &--active {
