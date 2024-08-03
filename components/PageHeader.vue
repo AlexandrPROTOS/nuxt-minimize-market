@@ -185,10 +185,6 @@
       width: 50px;
       height: 45px;
     }
-
-    &--active {
-      background-image: url("../assets/icons/basket_white.svg");
-    }
   }
 }
 </style>
