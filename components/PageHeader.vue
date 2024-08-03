@@ -1,53 +1,82 @@
 <template>
   <div class="page-header">
-    <nav class="page-header__nav main-container">
-      <ul class="page-header__nav-list">
-        <li class="page-header__nav-item">
-          <NuxtLink
-            class="page-header__nav-link"
-            to="/"
-            active-class="page-header__nav-link--active"
-            >Каталог</NuxtLink
-          >
-        </li>
-        <li class="page-header__nav-item">
-          <h1 class="app-heading">Nuxt-Minimize-Market</h1>
-        </li>
-        <li class="page-header__nav-item">
-          <NuxtLink
-            class="page-header__nav-link page-header__nav-cart"
-            to="/cart"
-            active-class="page-header__nav-link--active page-header__nav-cart--active"
-          />
-        </li>
-      </ul>
-    </nav>
+    <div class="page-header__content main-container">
+      <div class="page-header__logo">
+        <img
+          src="/assets/icons/icon-black.svg"
+          alt=""
+          class="page-header__app-logo"
+        />
+        <h1 class="page-header__app-heading">Nuxt Minimize Market</h1>
+      </div>
+      <nav class="page-header__nav">
+        <ul class="page-header__nav-list">
+          <li class="page-header__nav-item">
+            <NuxtLink
+              class="page-header__nav-link"
+              to="/"
+              active-class="page-header__nav-link--active"
+              >Каталог</NuxtLink
+            >
+          </li>
+
+          <li class="page-header__nav-item">
+            <NuxtLink
+              class="page-header__nav-link page-header__nav-cart"
+              to="/cart"
+              active-class="page-header__nav-link--active page-header__nav-cart--active"
+            />
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .page-header {
   width: 100%;
-  background-color: white;
-  box-shadow: 0 2px 2px 2px blue;
+  background-color: rgb(255 255 255 / 0.85);
+  box-shadow: 0 1px 20px 0 blue;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__app-logo {
+    display: flex;
+    width: 60px;
+    height: 60px;
+  }
+
+  &__app-heading {
+    margin: 0;
+    font-size: 26px;
+    color: blue;
+    align-self: center;
+  }
 
   &__nav-list {
     display: flex;
+    justify-content: space-between;
     list-style: none;
+    width: 400px;
     margin: 0;
     padding: 12px 0;
   }
 
   &__nav-item {
+    display: flex;
     margin: 0;
     font-size: 30px;
     line-height: 1.15;
     align-self: center;
-
-    &:nth-of-type(2) {
-      margin-right: auto;
-      margin-left: auto;
-    }
   }
 
   &__nav-link {
@@ -62,8 +91,13 @@
     }
 
     &:hover {
-      background-color: rgb(78 131 244);
+      background-color: rgba(0 79 250 / 0.5);
       border-radius: 10px;
+      transition: ease-in-out 0.2s;
+    }
+
+    &:not(:hover) {
+      transition: 0.2s;
     }
 
     &--active {
@@ -85,15 +119,10 @@
     background-repeat: no-repeat;
     background-size: 40px;
 
+    &:hover,
     &--active {
       background-image: url("../assets/icons/basket_white.svg");
     }
   }
-}
-
-.app-heading {
-  margin: 0;
-  font-size: 32px;
-  color: blue;
 }
 </style>
