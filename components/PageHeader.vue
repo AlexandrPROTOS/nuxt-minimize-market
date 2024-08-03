@@ -186,7 +186,6 @@
       height: 45px;
     }
 
-    &:hover,
     &--active {
       background-image: url("../assets/icons/basket_white.svg");
     }
