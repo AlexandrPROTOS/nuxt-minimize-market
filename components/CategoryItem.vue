@@ -39,21 +39,23 @@ defineProps({
 .category-item {
   &__btn {
     font-size: 22px;
-    text-decoration: underline dotted gray;
-    color: gray;
+    color: rgb(0 0 0);
     background: none;
     border: none;
+    border-radius: 5px;
 
     &--active {
-      text-decoration: unset;
-      color: black;
+      color: white;
+      background-color: black;
+      transition: ease 0.4s;
     }
 
     &:not(.category-item__btn--active) {
       &:hover {
-        color: rgb(73 73 73);
+        color: white;
         cursor: pointer;
-        transition: ease 50ms;
+        background-color: rgba(0 79 250 / 0.5);
+        transition: ease 0.4s;
       }
     }
   }

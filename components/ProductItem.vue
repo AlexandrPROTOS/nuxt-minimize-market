@@ -45,12 +45,14 @@ defineProps({
 <style scoped lang="scss">
 .products-item {
   justify-content: space-between;
-  width: calc(25% - 25px);
+  width: calc(33.33% - 25px);
   height: 360px;
   padding: 15px;
-  background-color: aliceblue;
+  cursor: pointer;
+  background-color: rgb(255 255 255 / 0.8);
   border: 2px solid gray;
   border-radius: 25px;
+  box-shadow: 5px 5px 20px 5px rgb(255 255 255 / 0.8);
 
   &__link {
     text-decoration: none;
@@ -61,18 +63,22 @@ defineProps({
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    box-shadow: 2px 2px 7px 1px black;
-    transition: ease 50ms;
-  }
-
   &__img {
     width: 100%;
-    height: 70%;
+    height: 60%;
     background-color: white;
     border-radius: 20px;
-    object-fit: contain;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 2px 2px 7px 1px rgb(124 124 216);
+    transition: ease 100ms;
+  }
+
+  &:not(:hover) {
+    transition: ease-in-out 500ms;
   }
 
   &__title {
