@@ -47,7 +47,6 @@ defineProps({
   justify-content: space-between;
   width: calc(33.33% - 25px);
   height: 360px;
-  padding: 15px;
   cursor: pointer;
   background-color: rgb(255 255 255 / 0.8);
   border: 2px solid gray;
@@ -55,6 +54,11 @@ defineProps({
   box-shadow: 5px 5px 20px 5px rgb(255 255 255 / 0.8);
 
   &__link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
     text-decoration: none;
     color: black;
 
