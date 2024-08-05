@@ -60,4 +60,25 @@ defineProps({
     }
   }
 }
+
+@media (width <= 1000px) {
+  .category-item {
+    &__btn {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (width <= 500px) {
+  .category-item {
+    width: calc(50% - 10px);
+    text-align: center;
+    background-color: rgb(255 255 255);
+    border-radius: 5px;
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}
 </style>

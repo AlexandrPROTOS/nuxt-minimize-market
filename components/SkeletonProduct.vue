@@ -14,7 +14,7 @@
   width: calc(33.33% - 25px);
   height: 360px;
   padding: 15px;
-  background-color: rgb(255 255 255 / 0.3);
+  background-color: rgb(255 255 255 / 0.8);
   border: 2px solid gray;
   border-radius: 25px;
   box-shadow: 5px 5px 20px 5px rgb(128 128 128 / 0.8);
@@ -43,6 +43,21 @@
     width: 20%;
     height: 20.7px;
     margin-top: 18px;
+  }
+}
+
+@media (width <= 1000px) {
+  .skeleton {
+    width: calc(40% - 25px);
+    max-width: 250px;
+  }
+}
+
+@media (width <= 768px) {
+  .skeleton {
+    width: calc(100% - 25px);
+    max-width: 200px;
+    max-height: 300px;
   }
 }
 </style>

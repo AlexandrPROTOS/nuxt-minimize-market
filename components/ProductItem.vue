@@ -97,4 +97,19 @@ defineProps({
     text-align: center;
   }
 }
+
+@media (width <= 1000px) {
+  .products-item {
+    width: calc(40% - 25px);
+    max-width: 250px;
+  }
+}
+
+@media (width <= 768px) {
+  .products-item {
+    width: calc(100% - 25px);
+    max-width: 200px;
+    max-height: 300px;
+  }
+}
 </style>

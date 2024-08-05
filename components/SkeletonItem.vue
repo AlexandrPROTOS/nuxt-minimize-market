@@ -15,9 +15,19 @@
 
   &__category {
     width: 90px;
-    height: 23.3px;
+    height: 21.3px;
+    margin-top: 2px;
     margin-right: 6px;
     margin-left: 6px;
+  }
+}
+
+@media (width <= 1000px) {
+  .skeleton {
+    &__category {
+      width: 70px;
+      height: 18.4px;
+    }
   }
 }
 </style>

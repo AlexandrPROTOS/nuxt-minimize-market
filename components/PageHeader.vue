@@ -171,6 +171,11 @@
 
 @media (width <= 1000px) {
   .page-header {
+    &__content {
+      margin-right: 20px;
+      margin-left: 30px;
+    }
+
     &__app-logo {
       width: 50px;
       height: 50px;
@@ -206,7 +211,7 @@
     }
 
     &__app-heading {
-      font-size: 16px;
+      font-size: 13px;
     }
 
     &__nav-list {
@@ -215,7 +220,7 @@
     }
 
     &__nav-item {
-      margin-right: auto;
+      margin-right: 0;
       margin-left: auto;
       font-size: 18px;
     }
@@ -246,17 +251,33 @@
   .page-header {
     box-shadow: 0 2px 20px 0 black;
 
-    &__app-heading {
-      display: none;
-      font-size: 16px;
+    &__content {
+      justify-content: center;
+      margin: 0;
     }
 
-    &__nav-list {
-      width: 250px;
+    &__app-logo {
+      width: 55px;
+      margin-left: 20px;
+      padding-left: 15px;
+    }
+
+    &__app-heading {
+      display: none;
     }
 
     &__nav-item {
       margin-right: 0;
+      margin-left: 0;
+
+      &:nth-of-type(1) {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      &:nth-of-type(2) {
+        margin-right: 20px;
+      }
     }
   }
 }

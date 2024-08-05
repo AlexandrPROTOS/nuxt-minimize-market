@@ -50,4 +50,30 @@
     }
   }
 }
+
+@media (width <= 1000px) {
+  .page-footer {
+    &__link {
+      padding: 10px;
+      padding-left: 40px;
+      font-size: 18px;
+      background-size: 30px;
+    }
+  }
+}
+
+@media (width <= 500px) {
+  .page-footer {
+    background: none;
+    box-shadow: none;
+
+    &__container {
+      max-width: 320px;
+      background-color: rgb(255 255 255 / 0.8);
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      box-shadow: 0 1px 10px 0 black;
+    }
+  }
+}
 </style>

@@ -32,7 +32,7 @@ export const useCatalogStore = defineStore("catalog", (): UseCatalogStore => {
     );
     setTimeout(() => {
       isCategoriesLoading.value = false;
-    }, 500);
+    }, 1000);
   };
 
   const getProducts = async (categoryId?: Category["id"]): Promise<void> => {
@@ -42,7 +42,7 @@ export const useCatalogStore = defineStore("catalog", (): UseCatalogStore => {
     products.value.push(...resultProducts.results);
     setTimeout(() => {
       isProductsLoading.value = false;
-    }, 500);
+    }, 1000);
   };
 
   const getCatalog = async (): Promise<void> => {
