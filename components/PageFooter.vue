@@ -62,6 +62,10 @@
       padding-left: 40px;
       font-size: 18px;
       background-size: 30px;
+
+      &:hover {
+        color: black;
+      }
     }
   }
 }
