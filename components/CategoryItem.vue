@@ -64,7 +64,7 @@ defineProps({
 @media (width <= 1000px) {
   .category-item {
     &__btn {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 }

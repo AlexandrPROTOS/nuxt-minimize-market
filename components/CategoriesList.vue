@@ -71,7 +71,7 @@ const catalog = useCatalogStore();
   .categories {
     flex-direction: column;
     width: auto;
-    height: fit-content;
+    height: 63.4px;
     max-width: 500px;
     min-width: auto;
     min-height: 60.7px;

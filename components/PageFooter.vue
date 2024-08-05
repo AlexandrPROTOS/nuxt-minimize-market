@@ -39,6 +39,10 @@
     background-repeat: no-repeat;
     background-size: 35px;
 
+    &:visited {
+      color: black;
+    }
+
     &:hover {
       color: blue;
       transform: scale(0.9);
