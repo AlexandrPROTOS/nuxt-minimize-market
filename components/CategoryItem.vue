@@ -27,7 +27,10 @@ defineProps({
         'category-item__btn--active':
           catalog.activeFilterCategory === category.id,
       }"
-      :disabled="catalog.activeFilterCategory === category.id"
+      :disabled="
+        catalog.activeFilterCategory === category.id ||
+        catalog.isProductsLoading
+      "
       @click="catalog.selectCategory(category.id)"
     >
       {{ category.title }}

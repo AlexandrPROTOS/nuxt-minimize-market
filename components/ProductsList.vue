@@ -1,15 +1,15 @@
 <script setup lang="ts">
 const catalog = useCatalogStore();
+
+const skeletonsCount = computed(() => {
+  return catalog.activeFilterCategory === "all" ? 6 : 3;
+});
 </script>
 
 <template>
-  <Transition
-    name="is-loading"
-    mode="out-in"
-    :duration="{ enter: 500, leave: 800 }"
-  >
+  <Transition name="is-loading" mode="out-in">
     <ul v-if="catalog.isProductsLoading" class="products">
-      <SkeletonProduct v-for="n in 6" :key="n" />
+      <SkeletonProduct v-for="n in skeletonsCount" :key="n" />
     </ul>
     <ul v-else class="products">
       <ProductItem
@@ -50,11 +50,16 @@ const catalog = useCatalogStore();
 
 .is-loading-enter-active,
 .is-loading-leave-active {
-  transition: opacity 500ms ease;
+  transition: opacity 500ms;
 }
 
 .is-loading-enter-from,
 .is-loading-leave-to {
   opacity: 0;
+}
+
+.is-loading-enter-to,
+.is-loading-leave-from {
+  opacity: 1;
 }
 </style>
