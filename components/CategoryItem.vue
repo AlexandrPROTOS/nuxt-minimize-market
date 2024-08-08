@@ -68,6 +68,14 @@ defineProps({
   .category-item {
     &__btn {
       font-size: 18px;
+
+      &:not(.category-item__btn--active) {
+        &:hover {
+          color: black;
+          background: none;
+          transition: none;
+        }
+      }
     }
   }
 }

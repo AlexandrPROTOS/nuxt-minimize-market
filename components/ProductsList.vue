@@ -57,9 +57,4 @@ const skeletonsCount = computed(() => {
 .is-loading-leave-to {
   opacity: 0;
 }
-
-.is-loading-enter-to,
-.is-loading-leave-from {
-  opacity: 1;
-}
 </style>
